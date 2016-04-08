@@ -1,3 +1,3 @@
 # Intento
 Empezando a hacer el tp
-asd
+asd .. siguiendo el tp
