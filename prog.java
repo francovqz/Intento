@@ -1,5 +1,5 @@
 ////hay que ponerle la operacion en el siguiente formato:
-////  num1 op1 num2 op2 = ||||| ej: 123+432-213=
+////  num1 op1 num2 op2  ||||| ej: 123+432-213
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -14,14 +14,29 @@ public class prog{
 
 			Scanner scan = new Scanner(System.in);
 			String linea = scan.nextLine();
-			String buffer = "";
+			
 			ArrayList<String> operadores = new ArrayList<String>();
 			ArrayList<String> numeros = new ArrayList<String>();
-			for(int i = 0; i < linea.length(); i++){
+			
+			leerCuenta(linea, operadores, numeros);
+			
+			int resultado = calcular(operadores, numeros);
+			
+			
+			System.out.println(resultado);
+			System.out.println("ingrese '1' para salir o '0' para hacer otra operacion");
+			salida = scan.nextInt();
+			
+		}
+	}
+	
+	public static void leerCuenta(String cuenta, ArrayList<String> operadores, ArrayList<String> numeros){
+		String buffer = "";
+		for(int i = 0; i < cuenta.length(); i++){
 					
-					String caracter = String.valueOf(linea.charAt(i));
+					String caracter = String.valueOf(cuenta.charAt(i));
 					if(!caracter.equals("+") && !caracter.equals("=") && !caracter.equals("-"))
-						buffer = buffer.concat(String.valueOf(linea.charAt(i)));
+						buffer = buffer.concat(String.valueOf(cuenta.charAt(i)));
 					else{
 						
 						if(caracter.equals("+"))
@@ -34,24 +49,25 @@ public class prog{
 						buffer = "";
 					}
 			}
-			numeros.add(buffer);
-			int resultado = 0;
-			for(int j = 0; j < numeros.size(); j++){
-				if(j == 0)
-					resultado = Integer.valueOf(numeros.get(j)).intValue();
-				else{
-						String dato = operadores.get(j-1);
-						if(dato.equals("+"))                            
-							resultado += Integer.valueOf(numeros.get(j)).intValue();
-						if(dato.equals("-"))
-							resultado -= Integer.valueOf(numeros.get(j)).intValue();
-					}
-				}
-			
-			System.out.println(resultado);
-			System.out.println("ingrese '1' para salir o '0' para hacer otra operacion");
-			salida = scan.nextInt();
-			
-		}
+		numeros.add(buffer);
 	}
+	
+	public static int calcular(ArrayList<String> operadores, ArrayList<String> numeros){
+	
+		int resultado = 0;
+		for(int j = 0; j < numeros.size(); j++){
+			if(j == 0)
+				resultado = Integer.valueOf(numeros.get(j)).intValue();
+			else{
+					String dato = operadores.get(j-1);
+					if(dato.equals("+"))                            
+						resultado += Integer.valueOf(numeros.get(j)).intValue();
+					if(dato.equals("-"))
+						resultado -= Integer.valueOf(numeros.get(j)).intValue();
+				}
+		}
+		return resultado;	
+	}
+	
+	
 }
