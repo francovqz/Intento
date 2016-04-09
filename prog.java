@@ -30,31 +30,28 @@ public class prog{
 						if(caracter.equals("-"))
 							operadores.add("-");
 							
-						if(caracter.equals("=")){
-							numeros.add(buffer);
-							
-							int resultado = 0;
-							for(int j = 0; j < numeros.size(); j++){
-								if(j == 0)
-									resultado = Integer.valueOf(numeros.get(j)).intValue();
-								else{
-										String dato = operadores.get(j-1);
-										if(dato.equals("+"))                            
-											resultado += Integer.valueOf(numeros.get(j)).intValue();
-										if(dato.equals("-"))
-											resultado -= Integer.valueOf(numeros.get(j)).intValue();
-									}
-								}
-							
-							System.out.println(resultado);
-							System.out.println("ingrese '1' para salir o '0' para hacer otra operacion");
-							salida = scan.nextInt();
-							break;
-						}
 						numeros.add(buffer);
 						buffer = "";
 					}
 			}
+			numeros.add(buffer);
+			int resultado = 0;
+			for(int j = 0; j < numeros.size(); j++){
+				if(j == 0)
+					resultado = Integer.valueOf(numeros.get(j)).intValue();
+				else{
+						String dato = operadores.get(j-1);
+						if(dato.equals("+"))                            
+							resultado += Integer.valueOf(numeros.get(j)).intValue();
+						if(dato.equals("-"))
+							resultado -= Integer.valueOf(numeros.get(j)).intValue();
+					}
+				}
+			
+			System.out.println(resultado);
+			System.out.println("ingrese '1' para salir o '0' para hacer otra operacion");
+			salida = scan.nextInt();
+			
 		}
 	}
 }
