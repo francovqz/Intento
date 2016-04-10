@@ -24,8 +24,16 @@ public class Main {
 				int resultado = calcular(operadores, numeros);
 					
 				System.out.println(resultado);
+				
+					
 				System.out.println("Ingrese '1' para salir o '0' para hacer otra operacion");
-				salida = scan.nextInt();
+				try {
+					salida = scan.nextInt();
+					}
+				catch(Exception e){
+						System.out.println("ingreso un valor no entero");
+						break;
+					}
 				
 				
 			}
