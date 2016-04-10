@@ -1,8 +1,6 @@
 ////hay que ponerle la operacion en el siguiente formato:
 ////  num1 op1 num2 op2  ||||| ej: 123+432-213
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
+
 import java.util.ArrayList;
 public class prog{
     
